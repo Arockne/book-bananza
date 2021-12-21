@@ -1,11 +1,17 @@
 import React from 'react'
-import Book from './book'
+import { Link } from 'react-router-dom'
 
 function BookList({ books }) {
   return (
     <div>
         {
-          books.map((book) => <Book key={book.isbn} book={book}/>)
+          books.map((book) => {
+            return (
+              <div key={book.id}>
+                <Link key={book.id} to={`books/${book.id}`}>{book.title}</Link>
+              </div>
+            )
+          })
         }
     </div>
   )
