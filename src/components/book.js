@@ -9,7 +9,7 @@ function Book({books}) {
   
   useEffect(() => {
     setBook(books.find((book) => book.id === Number(id)))
-  }, [id])
+  }, [])
   
   return (
     <div>
