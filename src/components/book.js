@@ -8,15 +8,32 @@ function Book({books}) {
   const { id } = useParams()
   
   useEffect(() => {
-    setBook(books.find((book) => book.id === Number(id)))
-  }, [])
+    const foundBook = books.find((book) => book.id === Number(id))
+    if (foundBook) {
+      setBook(foundBook)
+    }
+  }, [books])
   
+  function bookDetail() {
+    return (
+    <>
+          <h2>{book.title}</h2>
+          <h3>{book.subtitle}</h3>
+          <p>{book.description}</p>
+    </>
+    )
+  }
+
+  function bookError() { 
+    if (books.length === 0) {
+      return <div></div>
+    } else {
+      return <p>Book not found</p>
+    }
+  }
+
   return (
-    <div>
-      <h2>{book.title}</h2>
-      <h3>{book.subtitle}</h3>
-      <p>{book.description}</p>
-    </div>
+    <div>{book.title ? bookDetail() : bookError()}</div> 
   )
 }
 

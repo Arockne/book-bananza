@@ -20,7 +20,6 @@ function App() {
     //setBooks((books) => [...books, book])
     setBooks(updatedBooks)
   }
-
   return (
     <div className="App">
       <NavBar />

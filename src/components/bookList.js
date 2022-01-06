@@ -8,7 +8,7 @@ function BookList({ books }) {
           books.map((book) => {
             return (
               <div key={book.id}>
-                <Link key={book.id} to={`books/${book.id}`}>{book.title}</Link>
+                <Link key={book.id} to={`/books/${book.id}`}>{book.title}</Link>
               </div>
             )
           })

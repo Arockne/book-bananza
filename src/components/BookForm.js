@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 const defaultFormData = {
   isbn: '',
@@ -14,6 +15,8 @@ const defaultFormData = {
 
 function BookForm({ addBook }) {
   const [formData, setFormData] = useState(defaultFormData)
+
+  const history = useHistory();
 
   function handleFormChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -36,8 +39,9 @@ function BookForm({ addBook }) {
     .then(data => {
       addBook(data)
       setFormData(defaultFormData)
+      history.push(`/books/${data.id}`)
     })
-
+    
   }
 
   return (
